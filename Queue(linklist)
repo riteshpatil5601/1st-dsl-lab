@@ -1,0 +1,88 @@
+ #include<iostream>
+ using namespace std;
+ struct Node
+ {
+    int data;
+    Node*next;
+ };
+ class Queue{
+    public:
+    Node*front;
+    Node*rear;
+    Queue()
+    {
+        front=rear=NULL;
+    }
+    void insert(int x)
+    {
+        Node*t=new Node();
+        t->data=x;
+        t->next=NULL;
+
+        if(front==NULL)
+        {
+            front=rear=t;
+        }
+        else{
+            rear->next=t;
+            rear=t;
+        }
+    }
+    void deleteF()
+    {
+        if(front==NULL)
+        {
+            cout<<"Empty"<<endl;
+
+        }
+        else
+        {
+            Node*t=front;
+            cout<<front->data<<" "<<"deleted:"<<endl;
+            front=front->next;
+            delete t;
+        }
+
+    }
+    void display()
+    {
+    Node*t=front;
+    while(t!=NULL)
+    {
+        cout<<t->data<<" ";
+        t=t->next;
+    }
+    cout<<endl;
+    } 
+ };
+
+ int main()
+ {
+    Queue q;
+    int z, p;
+    cout<<"1:insert  2:delete  3:display  "<<endl;
+    do{
+      cout<<"enter choice:";
+      cin>>p;
+      
+      switch(p)
+      {
+        case 1:
+        cout<<"Enter value";
+        cin>>z;
+        q.insert(z);
+         break;
+        case 2:
+         q.deleteF();
+         break;
+        case 3:
+         q.display();
+         break;
+        
+        default:
+         cout<<"invalid..";
+      
+      }
+    }while(p != 4);
+    
+ }
