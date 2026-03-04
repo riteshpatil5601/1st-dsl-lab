@@ -1,0 +1,63 @@
+
+#include<iostream>
+using namespace std;
+
+class Stack {
+public:
+    int st[10];
+    int top;
+
+    Stack() {
+        top = -1;
+    }
+
+    void push(int a) {
+        if (top == 9) {
+            cout << "Stack is overflow" << endl;
+        } else {
+            top++;
+            st[top] = a;
+            cout << st[top] << " pushed in stack" << endl;
+        }
+    }
+
+    void pop() {
+        if (top == -1) {
+            cout << "Stack is underflow" << endl;
+        } else {
+            cout << st[top] << " popped" << endl;
+            top--;
+        }
+    }
+
+    void show() {
+        if (top == -1) {
+            cout << "EMPTY" << endl;
+        } else {
+            for (int i = 0; i <= top; i++) {
+                cout << st[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    Stack s;
+    int a;
+
+    for (int i = 0; i < 8; i++) {
+        cout << "Enter value: ";
+        cin >> a;
+        s.push(a);
+    }
+
+    s.show();
+
+    cout << "After pop:" << endl;
+    s.pop();
+
+    s.show();
+
+    return 0;
+}
