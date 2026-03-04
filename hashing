@@ -1,0 +1,41 @@
+
+#include<iostream>
+using namespace std;
+
+int m;
+
+int hashFunction(int k) {
+    if (k < 10) {
+        return (k % m + 1);
+    } else {
+        return (k % m);
+    }
+}
+
+int main() {
+    int k;
+    int arr[10];
+    int p[10];
+
+    for (int i = 0; i < 10; i++) {
+        cout << "Enter key: ";
+        cin >> k;
+        arr[i] = k;
+    }
+
+    cout << "Enter size: ";
+    cin >> m;
+
+    for (int i = 0; i < 10; i++) {
+        p[i] = hashFunction(arr[i]);
+    }
+
+    cout << "Size: " << m << endl;
+    cout << "Key  Index" << endl;
+
+    for (int i = 0; i < 10; i++) {
+        cout << arr[i] << "    " << p[i] << endl;
+    }
+
+    return 0;
+}
