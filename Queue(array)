@@ -1,0 +1,92 @@
+#include<iostream>
+using namespace std;
+class Queue
+{ public:
+    int arr[10];
+    int front ,rear;
+
+    Queue()
+    {
+        front=-1;
+        rear=-1;
+    }
+
+    void insert(int value)
+    {
+        if(rear==9)
+        {
+            cout<<"Queue is Overflow"<<endl;
+
+        }
+        else
+        {
+            if(front==-1)
+            {
+                front=0;
+            }
+            rear++;
+            arr[rear]=value;
+            cout<<value<<"inserted in queue"<<endl;
+
+        }
+    }
+    void deleteF()
+    {
+        if(front==-1||front>rear)
+        {
+            cout<<"Queue is Underflow"<<endl;
+
+        }
+        else
+        {
+            cout<<arr[front]<<"deleted from queue"<<endl;
+
+        }
+        front ++;
+    }
+    void display()
+    {
+        if(front==-1||front>rear)
+        {
+            cout<<"Queue is Empty"<<endl;
+
+        }
+        else{
+            cout<<"Queue elements:";
+            for(int i=0;i<=rear;i++)
+            {
+                cout<<arr[i]<<" ";
+
+            }
+            cout<<endl;
+        }
+    }
+};
+int main()
+{
+    Queue q;
+    int choice , value;
+    cout<<"1:insert  2: delete  3:display  "<<endl;
+    do{
+    cout<<"enter choice";
+    cin>>choice;
+    switch(choice)
+    {
+        case 1:
+          cout<<"Enter value:";
+          cin>>value;
+          q.insert(value);
+          break;
+
+        case 2 :
+         q.deleteF();
+         break;
+        case 3:
+        q.display();
+        break;
+
+        default:
+        cout<<"invalid";
+    }
+}while(choice>3);
+}
